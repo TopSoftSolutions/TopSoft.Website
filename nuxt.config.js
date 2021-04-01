@@ -15,6 +15,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'js/three.min.js' },
+      { src: 'js/p5.min.js' },
+      { src: 'js/vanta.topology.min.js' },
     ]
   },
 
@@ -23,7 +28,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/aos.client"],
+  plugins: ["@/plugins/aos.client", { src: "@/plugins/vue-particles", ssr: false }, "@/plugins/vue-horizontal-card"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

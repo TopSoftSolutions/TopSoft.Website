@@ -8,6 +8,7 @@
         }
         .cls-2 {
           fill: #1ec2f2;
+          <!-- fill: #fff; -->
           <!-- animation-delay: 1s;-->
           <!-- animation: move 0.5s;  -->
         }
@@ -27,7 +28,7 @@
         } -->
       </style>
     </defs>
-    <title>Asset 10</title>
+    <title>TopSoft Logo</title>
     <g id="Layer_2" data-name="Layer 2">
       <g id="Layer_1-2" data-name="Layer 1">
         <path
@@ -86,14 +87,4 @@
 </template>
 
 <style>
-.NuxtLogo {
-  animation: 1s appear;
-  margin: auto;
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-}
 </style>

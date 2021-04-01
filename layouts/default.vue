@@ -6,27 +6,28 @@
 </template>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
 html,
 body {
   height: 100%;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 body {
   background-color: #fff;
+  overflow: overlay;
 }
 a {
   text-decoration: none;
 }
-p {
-  margin-bottom: 15px;
+/* total width */
+body::-webkit-scrollbar {
+  background-color: transparent;
 }
-p:last-of-type {
-  margin-bottom: 0px;
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px rgba(128, 128, 128, 0.4);
+  border-radius: 16px;
+  border: solid 5px transparent;
 }
 </style>
