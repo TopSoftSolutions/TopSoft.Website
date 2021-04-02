@@ -5,17 +5,17 @@
   >
     <nav>
       <div
-        class="grid grid-cols-2 sm:grid-cols-3 px-8 sm:px-20"
-        :class="prevScrollpos < 10 ? 'py-3' : 'py-3'"
+        class="grid grid-cols-2 sm:grid-cols-3 py-1 px-8 sm:px-20"
+        :class="prevScrollpos < 10 ? 'bg-transparent' : 'bg-tyellow'"
       >
         <Logo width="3em" class="col-span-1 my-auto sm:mx-auto" />
         <div class="col-span-1 sm:hidden flex flex-row justify-end">
           <button
             @click="mobileMenuOpen = !mobileMenuOpen"
-            class="w-10 h-10 text-gray-600 my-auto"
+            class="w-10 h-10 my-auto"
           >
             <svg
-              fill="white"
+              fill="black"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >

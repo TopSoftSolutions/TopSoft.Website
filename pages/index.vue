@@ -1,16 +1,18 @@
 <template>
   <div>
-    <section id="main" class="h-screen pt-24" style="background: #ffd02f">
-      <LogoDisassemble class="mx-auto" width="50%"></LogoDisassemble>
+    <section id="main" class="h-screen flex flex-row items-center bg-tyellow">
+      <LogoDisassemble class="mx-auto w-10/12 sm:w-6/12"></LogoDisassemble>
     </section>
-    <section class="h-screen" style="background: #fff">
-      <!-- data-aos="fade-up" -->
-      <!-- data-aos-delay="100" -->
+    <section>
+      <!-- data-aos="fade-up" data-aos-delay="100" -->
       <div class="h-full">
         <h3 class="sm:pl-20 mt-10 text-4xl">Latest Projects</h3>
-        <div>
+        <div class="flex flex-col">
           <div v-for="project of projects" :key="project.slug">
-            <div class="my-5 mx-auto sm:grid grid-cols-2 lg:w-10/12">
+            <div
+              class="my-4 mx-3 sm:mx-auto sm:grid grid-cols-2 sm:w-10/12"
+              style="grid-auto-flow: dense"
+            >
               <div class="col-span-1 overflow-hidden">
                 <!-- :src="require(`~/assets/resources/${project.img}`)" -->
                 <img
@@ -20,7 +22,7 @@
                 />
               </div>
               <div
-                class="pt-10 sm:pl-10 col-span-1 h-full"
+                class="pt-10 pl-3 sm:pl-10 sm:pr-5 col-span-1 sm:h-full"
                 style="background-color: #f2eae2"
               >
                 <nuxt-link
@@ -34,8 +36,8 @@
                       {{ project.client }}
                     </h2>
                     <p
-                      class="mt-5 overflow-ellipsis overflow-hidden font-normal"
-                      style="height: 45%; font-size: 32px"
+                      class="mt-5 overflow-ellipsis overflow-hidden font-normal text-3xl"
+                      style="height: 45%"
                     >
                       {{ project.description.substring(0, 100) }}
                     </p>
@@ -71,7 +73,9 @@
                           </clipPath>
                         </defs>
                       </svg>
-                      <span class="ml-3 font-medium">View Project Summary</span>
+                      <span class="ml-3 mb-5 font-medium"
+                        >View Project Summary</span
+                      >
                     </div>
                   </div>
                 </nuxt-link>
@@ -81,9 +85,21 @@
         </div>
       </div>
     </section>
-    <section class="h-screen" style="background: #fff"></section>
     <section class="h-screen" style="background: #fff">
-      <h3 class="sm:pl-20 mt-10 text-4xl">Trusted By</h3>
+      <div
+        class="flex flex-row items-center justify-between sm:px-20 mt-10 text-4xl"
+      >
+        <h3>Trusted By</h3>
+        <no-ssr>
+          <loading-progress
+            :progress="progress"
+            shape="line"
+            size="200"
+            width="200"
+            height="6"
+          />
+        </no-ssr>
+      </div>
       <div class="mx-16">
         <vue-horizontal-list :items="items" :options="options">
           <template v-slot:default="{ item }">
@@ -122,10 +138,18 @@
 export default {
   updated() {
     document.querySelector(".vhl-navigation")?.remove();
-    // document.querySelector(".vhl-btn-left")?.remove();
   },
   mounted() {
     document.querySelector(".vhl-navigation")?.remove();
+
+    setInterval(() => {
+      if (parseInt(this.progress) === 1) {
+        this.progress = 0.1;
+        return;
+      }
+      this.progress = parseFloat((this.progress + 0.1).toFixed(2));
+    }, 300);
+
     VANTA.TOPOLOGY({
       el: "#main",
       mouseControls: true,
@@ -143,14 +167,14 @@ export default {
     return {
       projects: [
         {
-          slug: "",
+          slug: "/1",
           img: "",
           client: "ID Bank",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
         },
         {
-          slug: "",
+          slug: "/2",
           img: "",
           client: "ID Bank",
           description:
@@ -175,9 +199,9 @@ export default {
       },
       items: [
         {
-          comapany: "IDBank",
+          comapany: "ZCMC",
           logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
+            "https://ameriabank.am/IR/images/default-source/default-album/zcmc_logob1f318b8d4e664d68a11ff0000cecace.jpg?sfvrsn=4",
         },
         {
           comapany: "IDBank",
@@ -234,42 +258,8 @@ export default {
           logo:
             "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
         },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
-        {
-          comapany: "Item 0",
-          logo:
-            "http://assets.stickpng.com/thumbs/58482acecef1014c0b5e4a1e.png",
-        },
       ],
+      progress: 0.1,
     };
   },
 };
@@ -284,14 +274,8 @@ export default {
 }
 */
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.vue-progress-path .progress {
+  stroke: black;
 }
 
 .tb-logo {
@@ -301,5 +285,17 @@ export default {
 
 .tb-logo:hover {
   filter: grayscale(0%);
+}
+
+.h-50vh {
+  height: 50vh;
+}
+
+.h-75vh {
+  height: 75vh;
+}
+
+.bg-tyellow {
+  background-color: #ffd02f;
 }
 </style>

@@ -28,7 +28,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/aos.client", { src: "@/plugins/vue-particles", ssr: false }, "@/plugins/vue-horizontal-card"],
+  plugins: ["@/plugins/aos.client", { src: "@/plugins/vue-particles", ssr: false }, "@/plugins/vue-horizontal-card", { src: "@/plugins/vue-progress-path", ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
